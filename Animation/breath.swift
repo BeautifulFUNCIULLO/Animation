@@ -41,8 +41,8 @@ private let gradienteHold = LinearGradient (gradient: Gradient (colors: [barcolo
 
 
 var NumAction: Int = 0
-private let minsize : CGFloat = 15
-private let maxsize : CGFloat = 60
+private let minsize : CGFloat = 30
+private let maxsize : CGFloat = 85
 private let inhaleTime : Double = 3
 private let exhaleTime :Double = 4
 private let pauseTime : Double = 0.5
@@ -85,24 +85,35 @@ private var se : Bool = false
         NavigationView{
 //        background(Color.black)
             ZStack{
+            
+                Text(action[NumAction])
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+
+                .frame( alignment: .center)
+                .position(x: 207, y: 310)
+                
                 
 //                  SEMICERCHI
                 
             Circle ()
                     .trim(from: 0, to: 0.75)
-                    .stroke (color ? barcolorholdBase : backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
-                .frame (width: 146, height: 146)
+//                color ? barcolorholdBase :
+                    .stroke ( backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                .frame (width: 200, height: 200)
                 .rotationEffect(.degrees(135))
                 .opacity(0.5)
+                .offset(y:-150)
                 
                 Spacer()
                 
               
                     Circle ()
                         .trim(from: progress1 ,to: progress)
-                        .stroke (color ? barcolorHold : coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
-                            .frame (width: 146, height: 146)
+//                color ? barcolorHold :
+                        .stroke ( coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                            .frame (width: 200, height: 200)
                             .rotationEffect(.degrees(135))
+                            .offset(y:-150)
 
                     Spacer()
 
@@ -115,12 +126,11 @@ private var se : Bool = false
                     Petals (size: size, inhaling: inhaling)
                 }
                 .rotationEffect(.degrees (inhaling ? 60 : -30))
+                .offset(y:-150)
 
-                    Spacer()
+//                    Spacer()
                     
-                    Text(action[NumAction])
-                        .font(/*@START_MENU_TOKEN@*/.body/*@END_MENU_TOKEN@*/)
-                        .offset( y: 80)
+                 
               
                 
                 
@@ -134,8 +144,9 @@ private var se : Bool = false
 
                     if counter == 0  {
                         color = false
+                        NumAction = 0
                         withAnimation(.linear(duration: Double(table [1]))){
-                            NumAction = 0
+                  
                             progress = 0.75
                             i += 1
                             
@@ -158,8 +169,9 @@ private var se : Bool = false
 
                     if counter1 == 10 {
                         color = true
-                        withAnimation(.linear(duration: Double(table[1]))){
                         NumAction = 1
+                        withAnimation(.linear(duration: Double(table[1]))){
+                       
                         progress = 0.0
                     inhaling = true
 
@@ -176,12 +188,13 @@ private var se : Bool = false
 
                     if counter2 == 20 {
                         color = false
-                        withAnimation(.linear(duration: Double(table[1]))){
                         NumAction = 0
+                        withAnimation(.linear(duration: Double(table[1]))){
+                       
                         progress = 0.75
                          
                             withAnimation(.linear(duration: inhaleTime).repeatCount((table [i] / Int (inhaleTime)))){
-
+                                
                                     inhaling = true
                                     size = maxsize
                             }
@@ -193,10 +206,14 @@ private var se : Bool = false
                         
                     }
                     counter2 += 1
-
+                   
+                   
                 }
+           
+                
                 }.navigationTitle("breath")
-            }
+            
+    }
         }
   
 

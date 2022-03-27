@@ -28,7 +28,9 @@ struct micro: View {
     @State var paperDUration:Double = 1
     
     var body: some View {
+        
         NavigationView{
+            
         ZStack{
             
             Color(UIColor.systemGray6)
@@ -81,6 +83,7 @@ struct micro: View {
 //                AIRPLANE
            Spacer()
                
+              
                 Button{
                     isanimated3.toggle()
 //                    withAnimation(.linear(duration: 1)){
@@ -105,7 +108,7 @@ struct micro: View {
                    
                         Image(systemName: "paperplane.fill")
                             .resizable()
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(Color.white)
                             .frame(width: isanimated3 ? MaxSize : MinSize, height: isanimated3 ? MaxSize : MinSize)
                             .position(x:isanimated3 ? finalx : initx, y: isanimated3 ? finaly : inity )
                             .animation(.linear(duration: duration2), value: isanimated3)

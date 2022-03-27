@@ -23,7 +23,16 @@ struct SubmitButton_Test: View {
             {
             Text(complete || inProgress ? "" : "Download")
            
+        
         }.navigationTitle("Async Button")
+                    .position(x: 207, y: 250)
+//        RoundedRectangle(cornerRadius: 25)
+//                    .frame(width: 350, height: 150)
+//                    .foregroundColor(Color.white)
+//                    .position(x: 207, y: 500)
+//
+//        Text("")
+//                    .position(x: 207, y: 450)
         }
         }
     }
@@ -83,4 +92,9 @@ struct AsyncButton<Content: View>: View {
     }
     
     
+}
+struct SubmitButton_TestPreview: PreviewProvider {
+    static var previews: some View {
+        SubmitButton_Test()
+    }
 }
