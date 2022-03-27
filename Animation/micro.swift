@@ -14,7 +14,7 @@ var inity : CGFloat = 40
 var finalx : CGFloat = 414
 var finaly : CGFloat = -700
 
-
+//
 struct micro: View {
     @State var isAnimated:Bool = false
     @State var isAnimated2:Bool = false

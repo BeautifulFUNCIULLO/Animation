@@ -146,7 +146,7 @@ private var se : Bool = false
                         color = false
                         NumAction = 0
                         withAnimation(.linear(duration: Double(table [1]))){
-                  
+//                  
                             progress = 0.75
                             i += 1
                             
