@@ -20,10 +20,11 @@ struct micro: View {
     @State var isAnimated2:Bool = false
     @State var isanimated3:Bool = false
     @State var duration:Double = 0.1
-    @State var duration1:Double = 0.4
+    @State var duration1:Double = 0.7
     @State var duration2: Double = 0.7
     let timer5 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         @State private var counter5 = 0
+    
     @State var paperIsAnimated:Bool = false
     @State var paperDUration:Double = 1
     
@@ -47,9 +48,20 @@ struct micro: View {
                 
             Button(){
                 isAnimated.toggle()
-                isAnimated2.toggle()
                 
-                
+                if isAnimated2 == false {
+                withAnimation(.linear(duration: duration)){
+                    isAnimated2 = true
+                    }
+
+                }
+                else {
+                    isAnimated = false
+                    withAnimation(.linear(duration: duration1)){
+                        isAnimated2 = true
+                        }
+                  
+                }
 
             }label: {
                 ZStack{
@@ -76,28 +88,28 @@ struct micro: View {
                     .resizable()
                     .frame(width: isAnimated2 ? 200 : 0, height: isAnimated2 ? 200 : 0)
                     .position(x: 68, y: -250)
-                    .foregroundColor(Color.red)
-                    .opacity(isAnimated2 ? 0 : 10)
-                    .animation(.linear(duration: duration1), value: isAnimated2)
+                    .foregroundColor(Color.white)
+                    .opacity(isAnimated2 ? 0 : 0.9)
+//                    .animation(.linear(duration: duration1), value: isAnimated2)
                     
 //                AIRPLANE
            Spacer()
                
               
                 Button{
-                    isanimated3.toggle()
-//                    withAnimation(.linear(duration: 1)){
-//                        MinSize = MaxSize
-//                        initx = finalx
-//                        inity = finaly
-//                        print(initx)
-//                        print(MinSize)
-//                        if counter5 == 1 {
-//                            print("s")
-//                        }
-//                        counter5 += 1
-//                    }
-                    
+//                    isanimated3.toggle()
+                    if isanimated3 == false {
+                    withAnimation(.linear(duration: duration2)){
+                        isanimated3 = true
+                        }
+
+                    }
+                    else {
+                        isanimated3 = false
+                        withAnimation(.linear(duration: duration2)){
+                            isanimated3 = true
+                            }
+                    }
                 } label: {
                     ZStack{
 //                      PAPER ICON
@@ -111,11 +123,11 @@ struct micro: View {
                             .foregroundColor(Color.white)
                             .frame(width: isanimated3 ? MaxSize : MinSize, height: isanimated3 ? MaxSize : MinSize)
                             .position(x:isanimated3 ? finalx : initx, y: isanimated3 ? finaly : inity )
-                            .animation(.linear(duration: duration2), value: isanimated3)
+//                            .animation(.linear(duration: duration2), value: isanimated3)
                     }
                 }.frame(width: 35, height: 34)
                     .position(x: -190, y: 40)
-                
+                    
                
                 }.frame(width: 414, height: 80)
                 .position(x: 207, y: 535)
@@ -150,3 +162,5 @@ struct micro_Previews: PreviewProvider {
         micro()
     }
 }
+
+
