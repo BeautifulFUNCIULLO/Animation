@@ -98,7 +98,7 @@ private var se : Bool = false
             Circle ()
                     .trim(from: 0, to: 0.75)
 //                color ? barcolorholdBase :
-                    .stroke ( backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                    .stroke (  color ? barcolorholdBase : backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
                 .frame (width: 200, height: 200)
                 .rotationEffect(.degrees(135))
                 .opacity(0.5)
@@ -110,7 +110,7 @@ private var se : Bool = false
                     Circle ()
                         .trim(from: progress1 ,to: progress)
 //                color ? barcolorHold :
-                        .stroke ( coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                        .stroke (  color ? barcolorHold : coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
                             .frame (width: 200, height: 200)
                             .rotationEffect(.degrees(135))
                             .offset(y:-150)

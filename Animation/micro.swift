@@ -19,7 +19,7 @@ struct micro: View {
     @State var isAnimated:Bool = false
     @State var isAnimated2:Bool = false
     @State var isanimated3:Bool = false
-    @State var duration:Double = 0.1
+    @State var duration:Double = 0.6
     @State var duration1:Double = 0.7
     @State var duration2: Double = 0.7
     let timer5 = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -41,7 +41,7 @@ struct micro: View {
                 .position(x: 207, y: 250)
 
             Spacer()
-//            paper(size1: MinSize, posx: initx, posy: inity)
+
             
             HStack{
                 //            HEART
@@ -56,11 +56,7 @@ struct micro: View {
 
                 }
                 else {
-                    isAnimated = false
-                    withAnimation(.linear(duration: duration1)){
-                        isAnimated2 = true
-                        }
-                  
+                    isAnimated2 = false
                 }
 
             }label: {
@@ -90,14 +86,18 @@ struct micro: View {
                     .position(x: 68, y: -250)
                     .foregroundColor(Color.white)
                     .opacity(isAnimated2 ? 0 : 0.9)
-//                    .animation(.linear(duration: duration1), value: isAnimated2)
+                
+                
+
                     
 //                AIRPLANE
+                
+                
            Spacer()
                
               
                 Button{
-//                    isanimated3.toggle()
+
                     if isanimated3 == false {
                     withAnimation(.linear(duration: duration2)){
                         isanimated3 = true
@@ -123,7 +123,7 @@ struct micro: View {
                             .foregroundColor(Color.white)
                             .frame(width: isanimated3 ? MaxSize : MinSize, height: isanimated3 ? MaxSize : MinSize)
                             .position(x:isanimated3 ? finalx : initx, y: isanimated3 ? finaly : inity )
-//                            .animation(.linear(duration: duration2), value: isanimated3)
+
                     }
                 }.frame(width: 35, height: 34)
                     .position(x: -190, y: 40)
@@ -142,21 +142,6 @@ struct micro: View {
 }
 
 
-//struct paper: View {
-//    @State var size1 :CGFloat
-//    @State var posx : CGFloat
-//    @State var posy : CGFloat
-//
-//    var body: some View{
-//        ZStack{
-//            Image(systemName: "paperplane")
-//
-//                .foregroundColor(Color.black)
-//
-//        } .frame(width: size1 , height: size1)
-//            .position(x: posx, y: posy)
-//    }
-//}
 struct micro_Previews: PreviewProvider {
     static var previews: some View {
         micro()
