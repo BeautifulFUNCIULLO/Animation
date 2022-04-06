@@ -98,7 +98,7 @@ private var se : Bool = false
             Circle ()
                     .trim(from: 0, to: 0.75)
 //                color ? barcolorholdBase :
-                    .stroke (  color ? barcolorholdBase : backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                    .stroke (  backColor ,style:  StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
                 .frame (width: 200, height: 200)
                 .rotationEffect(.degrees(135))
                 .opacity(0.5)
@@ -110,7 +110,7 @@ private var se : Bool = false
                     Circle ()
                         .trim(from: progress1 ,to: progress)
 //                color ? barcolorHold :
-                        .stroke (  color ? barcolorHold : coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
+                        .stroke (   coloribarra,style:  StrokeStyle(lineWidth: 8, lineCap: .round, lineJoin: .round, miterLimit: .infinity))
                             .frame (width: 200, height: 200)
                             .rotationEffect(.degrees(135))
                             .offset(y:-150)
@@ -127,12 +127,6 @@ private var se : Bool = false
                 }
                 .rotationEffect(.degrees (inhaling ? 60 : -30))
                 .offset(y:-150)
-
-//                    Spacer()
-                    
-                 
-              
-                
                 
 //                ANIMATION
                 
@@ -234,13 +228,15 @@ private struct Petals : View {
 //         var petalGradientFinal =  petalGradientHold
         ZStack{
             ForEach(0..<6){ index in
+//
                 petalGradient.mask{
                 Circle()
                     .frame(width: size, height: size)
                     .offset(x: inhaling ? size * 0.5 :0)
                     .rotationEffect(.degrees(Double(-60+(60 * index))))
+                    
                 }
-                .blendMode(isMask  ? .normal : .screen) 
+                .blendMode(isMask  ? .normal : .screen)
          }
         }
         .frame(width: gradientsize, height: gradientsize)
